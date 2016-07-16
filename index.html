@@ -45,17 +45,10 @@
             <li role="presentation"><a href="#">Contact</a></li>
           </ul>
         </nav>
-        <!-- <h3 class="text-muted">Peace Pies Pizza</h3> -->
         <img src="logo.png" class="img-responsive">
         <h3>Peaceful Pizza Online Order Form</h3>
       </div>
-      <!--
-      <div class="jumbotron">
-        <h1>Peaceful Pizza</h1>
-        <p class="lead">PEACE PIES is committed to providing raw, vegan, gluten-free and soy-free foods to all. We offer a full menu consisting of pizzas, salads, wraps, entrees, dried goods, desserts, chocolates and accessories to aid in the live food lifestyle. We have built strong relationships with numerous local farms who supply us with the freshest local ingredients.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Order today!</a></p>
-      </div>
-      -->
+
       <div class="row marketing">
         
         <div class="col-lg-10">
@@ -113,8 +106,9 @@
             </div>  <!-- End of Delivery Information -->
             
             <!-- Build Your Order -->
-                <div class="form-group" id="dough"> 
+                <div class="form-group" id="dough">
                     <legend>Build Your Pizza</legend>
+                    <input type="text" class="form-control floatRight" placeholder="Total" readonly id="total">
                 <h5 class="strong" id="doughLabel">STEP 1: Choose Your Dough</h5><span class="red"> *</span>
                     <div class="radio">
                     <label><input type="radio" name="optradio" id="handTossed">Hand Tossed</label>
@@ -138,43 +132,10 @@
                   </select>
                 </div>
                 
-                <!--
-                <div class="form-group hidden" id="handTossedSizes">
-                  <select class="form-control" id="handTossedSelection">
-                    <option value="select">Select</option>
-                    <option>Small $9.99</option>
-                    <option>Medium $12.99</option>
-                    <option>Large $14.99</option>
-                  </select>
-                </div>
-                
-                <div class="form-group hidden" id="thinCrustSizes">
-                  <select class="form-control" id="thinCrustSelection">
-                    <option value="select">Select</option>
-                    <option>Medium $11.99</option>
-                    <option>Large $13.99</option>
-                  </select>
-                </div>
-                
-                <div class="form-group hidden" id="newYorkStyleSizes">
-                  <select class="form-control" id="newYorkStyleSelection">
-                    <option value="select">Select</option>
-                    <option>Large $16.99</option>
-                    <option>Extra Large $19.99</option>
-                  </select>
-                </div>
-                
-                <div class="form-group hidden" id="glutenFreeSizes">
-                  <select class="form-control" id="glutenFreeSelection">
-                    <option value="select">Select</option>
-                    <option>Small $10.99</option>
-                  </select>
-                </div>
-                -->
                 <h5 class="strong">STEP 3: Cheese Options</h5>
                 
                 <div class="form-group" id="cheese">
-                  <select class="form-control" id="cheeseSelection">
+                  <select class="form-control" id="cheeseSelection" disabled="true">
                     <option>Light no charge</option>
                     <option selected>Normal no charge</option>
                     <option>Extra plus $2.99</option>
@@ -185,7 +146,7 @@
                 <h5 class="strong">STEP 4: Sauce Options</h5>
                 
                 <div class="form-group" id="sauce">
-                  <select class="form-control" id="sauceSelection">
+                  <select class="form-control" id="sauceSelection" disabled="true">
                     <option selected>Regular Tomato no charge</option>
                     <option>Hearty Tomato plus $0.99</option>
                     <option>BBQ Sauce plus $1.99</option>
@@ -196,37 +157,37 @@
                 
                 <div class="form-group" id="toppingSelection">           
                     <label class="checkbox-inline" style="margin-left: 10px">
-                      <input type="checkbox" value="pepperoni">pepperoni
+                      <input type="checkbox" name="topping" value="pepperoni" disabled>pepperoni
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="sausage">sausage
+                      <input type="checkbox" name="topping" value="sausage" disabled>sausage
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="ham">ham
+                      <input type="checkbox" name="topping" value="ham" disabled>ham
                     </label>
                      <label class="checkbox-inline">
-                      <input type="checkbox" value="bacon">bacon
+                      <input type="checkbox" name="topping" value="bacon" disabled>bacon
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="salami">salami
+                      <input type="checkbox" name="topping" value="salami" disabled>salami
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="peppers">peppers
+                      <input type="checkbox" name="topping" value="peppers" disabled>peppers
                     </label>
                      <label class="checkbox-inline">
-                      <input type="checkbox" value="olives">olives
+                      <input type="checkbox" name="topping" value="olives" disabled>olives
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="jalapenos">jalapenos
+                      <input type="checkbox" name="topping" value="jalapenos" disabled>jalapenos
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="mushrooms">mushrooms
+                      <input type="checkbox" name="topping" value="mushrooms" disabled>mushrooms
                     </label>
                      <label class="checkbox-inline">
-                      <input type="checkbox" value="pineapple">pineapple
+                      <input type="checkbox" name="topping" value="pineapple" disabled>pineapple
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="onions">onions
+                      <input type="checkbox" name="topping" value="onions" disabled>onions
                     </label>
                 </div>
                 
@@ -258,7 +219,7 @@
            $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";  
         } else {
            $("doughLabel").nextElementSibling.firstChild.nodeValue = "";
-           $("dough").focus();
+           $("sizes").focus();
         }
     }
         
@@ -328,37 +289,33 @@
         
         function chooseDough() {
            if ($("doughLabel").nextElementSibling.firstChild.nodeValue != "")
-           $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required"; 
+           $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
+        }
+        
+    $("sizes").addEventListener("change", updateTotalSize, false);
+        
+        function updateTotalSize() {
+            if (event.target.value != "") {
+                $("doughLabel").nextElementSibling.firstChild.nodeValue = "";
+                $("sizeLabel").nextElementSibling.firstChild.nodeValue = "";
+                $("cheeseSelection").disabled = false;
+                $("sauceSelection").disabled = false;
+                var toppings = document.getElementsByName("topping");
+                for (var x in toppings) {
+                    toppings[x]["disabled"] = false;
+                }
+                var total = $("total");
+                var val = event.target.value;
+                total.value = "$" + val;
+            } else {
+                $("sizeLabel").nextElementSibling.firstChild.nodeValue = " Please select a size";
+            }
         }
     
-//    function loadSizeOptions() {
-//        if ($("handTossed").checked) {
-//            $("placeHolder").setAttribute("class", "form-group hidden")
-//            $("handTossedSizes").setAttribute("class", "form-group")
-//            $("thinCrustSizes").setAttribute("class", "form-group hidden")
-//            $("newYorkStyleSizes").setAttribute("class", "form-group hidden")
-//            $("glutenFreeSizes").setAttribute("class", "form-group hidden")
-//        } else if ($("thinCrust").checked) {
-//            $("placeHolder").setAttribute("class", "form-group hidden")
-//            $("handTossedSizes").setAttribute("class", "form-group hidden")
-//            $("thinCrustSizes").setAttribute("class", "form-group")
-//            $("newYorkStyleSizes").setAttribute("class", "form-group hidden")
-//            $("glutenFreeSizes").setAttribute("class", "form-group hidden")
-//        } else if ($("newYorkStyle").checked) {
-//            $("placeHolder").setAttribute("class", "form-group hidden")
-//            $("handTossedSizes").setAttribute("class", "form-group hidden")
-//            $("thinCrustSizes").setAttribute("class", "form-group hidden")
-//            $("newYorkStyleSizes").setAttribute("class", "form-group")
-//            $("glutenFreeSizes").setAttribute("class", "form-group hidden")
-//        } else if ($("glutenFree").checked) {
-//            $("placeHolder").setAttribute("class", "form-group hidden")
-//            $("handTossedSizes").setAttribute("class", "form-group hidden")
-//            $("thinCrustSizes").setAttribute("class", "form-group hidden")
-//            $("newYorkStyleSizes").setAttribute("class", "form-group hidden")
-//            $("glutenFreeSizes").setAttribute("class", "form-group")
-//        }
-//    }
-//        
+    
+        
+    
+    
 //    $("handTossedSelection").addEventListener("mouseout", checkSizeSelection, false);
 //    $("thinCrustSelection").addEventListener("mouseout", checkSizeSelection, false);
 //    $("newYorkStyleSelection").addEventListener("mouseout", checkSizeSelection, false);

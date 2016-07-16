@@ -1,6 +1,9 @@
-.red {
-    color: red;
-    font-weight: bold;
+a {
+    color: #E78200;
+}
+
+select.form-control {
+    width: auto;
 }
 
 #otherType {
@@ -16,16 +19,25 @@
     display: none;
 }
 
-select.form-control {
-    width: auto;
-}
-
-a {
-    color: #E78200;
-}
-
 .strong {
     font-weight: bold;
     display: inline-block;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+input.floatRight {
+    width: 75px;
+    float: right;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input.checkbox {
+    disabled: true;
 }
 
