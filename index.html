@@ -138,8 +138,8 @@
                   <select class="form-control" id="cheeseSelection" disabled="true">
                     <option>Light no charge</option>
                     <option selected>Normal no charge</option>
-                    <option>Extra plus $2.99</option>
-                    <option>Double plus $3.99</option>
+                    <option value="2.99">Extra plus $2.99</option>
+                    <option value="3.99">Double plus $3.99</option>
                   </select>
                 </div>
                 
@@ -291,10 +291,18 @@
            if ($("doughLabel").nextElementSibling.firstChild.nodeValue != "")
            $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
         }
+    
+    var sizeCost;
+    var cheeseCost;
+    var sauceCost;
+    var total = $("total");
+    function totalCost() {
+        total.value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost));
+    }
         
-    $("sizes").addEventListener("change", updateTotalSize, false);
+    $("sizes").addEventListener("change", updateSizeCost, false);
         
-        function updateTotalSize() {
+        function updateSizeCost() {
             if (event.target.value != "") {
                 $("doughLabel").nextElementSibling.firstChild.nodeValue = "";
                 $("sizeLabel").nextElementSibling.firstChild.nodeValue = "";
@@ -304,13 +312,27 @@
                 for (var x in toppings) {
                     toppings[x]["disabled"] = false;
                 }
+                var sizeCost = parseFloat(event.target.value);
                 var total = $("total");
-                var val = event.target.value;
-                total.value = "$" + val;
+                total.value = Number(sizeCost);
             } else {
                 $("sizeLabel").nextElementSibling.firstChild.nodeValue = " Please select a size";
             }
         }
+        
+    $("cheeseSelection").addEventListener("change", updateCheeseCost, false);
+        
+        function updateCheeseCost() {
+                var cheeseCost = event.target.value;
+                total.value = eval(Number(total.value) + Number(cheeseCost));
+        }
+        
+    
+
+        
+        
+        
+
     
     
         
