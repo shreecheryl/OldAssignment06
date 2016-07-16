@@ -1,0 +1,6 @@
+Style Guide
+
+Orange: #E78200;
+Green: #74D14C;
+Light Green: #BBFF9C;
+Very Light Green: #eeffe6;

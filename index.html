@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Assignment 6 Pizza Order Form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+      
+    <!-- my custom core CSS -->
+    <link href="css/styles.css" rel="stylesheet"> 
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- <h3 class="text-muted">Peace Pies Pizza</h3> -->
+        <img src="logo.png" class="img-responsive">
+        <h3>Peaceful Pizza Online Order Form</h3>
+      </div>
+      <!--
+      <div class="jumbotron">
+        <h1>Peaceful Pizza</h1>
+        <p class="lead">PEACE PIES is committed to providing raw, vegan, gluten-free and soy-free foods to all. We offer a full menu consisting of pizzas, salads, wraps, entrees, dried goods, desserts, chocolates and accessories to aid in the live food lifestyle. We have built strong relationships with numerous local farms who supply us with the freshest local ingredients.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Order today!</a></p>
+      </div>
+      -->
+      <div class="row marketing">
+        
+        <div class="col-lg-10">
+
+        <!-- Delivery Information --> 
+            <div class="form-group"> 
+                <legend>Delivery Information</legend>
+                <p class="red">* = Required field</p>
+                <label for="fullName">Full Name</label><br>
+                <input type="text" class="form-control" id="fullName" placeholder="first and last name">
+                <span class="red"> *</span><br><br>
+
+                <label for="addressType">Address Type</label><br>
+                <select class="form-control" id="addressType">
+                    <option id="Select">Select</option>
+                    <option>House</option>
+                    <option>Apartment</option>
+                    <option>Business</option>
+                    <option>Campus</option>
+                    <option>Hotel</option>
+                    <option>Dorm</option>
+                    <option id="Other">Other</option>
+                </select><span class="red"> *</span><br><br>
+                
+                <div class="form-group hidden" id="otherType">
+                <label for="other">Please specify</label><br>
+                <input type="text" class="form-control" id="other" placeholder=""><span class="red"> *</span></div>
+                
+                <label for="address">Street Address</label><br>
+                <input type="text" class="form-control" id="address" placeholder="address"><span class="red"> *</span><br><br>
+                
+                <label for="addressNumber">Apt, Suite or Room Number</label><br>
+                <input type="text" class="form-control" id="addressNumber" placeholder="ex: 555"><br><br>
+                
+                <label for="city">City</label><br>
+                <input type="text" class="form-control" id="city" placeholder="city">
+                <span class="red"> *</span><br><br>
+                
+                <label for="state">State</label><br>
+                <input type="text" class="form-control" id="state" placeholder="ex: CA">
+                <span class="red"> *</span><br><br>
+                
+                <label for="zipCode">Zip Code</label><br>
+                <input type="text" class="form-control" id="zipCode" placeholder="ex: 55555">
+                <span class="red"> *</span><br><br>
+                
+                <label for="phoneNumber">Phone Number</label><br>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="ex: 555-555-5555">
+                <span class="red"> *</span><br><br>
+                
+                <label for="emailAddress">Email</label><br>
+                <input type="text" class="form-control" id="emailAddress" placeholder="ex: youremail@gmail.com">
+                <span class="red"> *</span><br><br>
+                 
+            </div>  <!-- End of Delivery Information -->
+            
+            <!-- Build Your Order -->
+                <div class="form-group" id="dough"> 
+                    <legend>Build Your Pizza</legend>
+                <h5 class="strong" id="doughLabel">STEP 1: Choose Your Dough</h5><span class="red"> *</span>
+                    <div class="radio">
+                    <label><input type="radio" name="optradio" id="handTossed">Hand Tossed</label>
+                    </div>
+                    <div class="radio">
+                    <label><input type="radio" name="optradio" id="thinCrust">Thin Crust</label>
+                    </div>
+                    <div class="radio">
+                    <label><input type="radio" name="optradio" id="newYorkStyle">New York Style</label>
+                    </div>
+                    <div class="radio">
+                    <label><input type="radio" name="optradio" id="glutenFree">Gluten Free</label>
+                    </div>
+                </div>
+                
+                <h5 class="strong" id="sizeLabel">STEP 2: Choose Size</h5><span class="red"> *</span>
+                
+                <div class="form-group" id="placeHolder">
+                  <select class="form-control" id="sizes">
+                    <option id="selectSize" value="select">Select</option>
+                  </select>
+                </div>
+                
+                <!--
+                <div class="form-group hidden" id="handTossedSizes">
+                  <select class="form-control" id="handTossedSelection">
+                    <option value="select">Select</option>
+                    <option>Small $9.99</option>
+                    <option>Medium $12.99</option>
+                    <option>Large $14.99</option>
+                  </select>
+                </div>
+                
+                <div class="form-group hidden" id="thinCrustSizes">
+                  <select class="form-control" id="thinCrustSelection">
+                    <option value="select">Select</option>
+                    <option>Medium $11.99</option>
+                    <option>Large $13.99</option>
+                  </select>
+                </div>
+                
+                <div class="form-group hidden" id="newYorkStyleSizes">
+                  <select class="form-control" id="newYorkStyleSelection">
+                    <option value="select">Select</option>
+                    <option>Large $16.99</option>
+                    <option>Extra Large $19.99</option>
+                  </select>
+                </div>
+                
+                <div class="form-group hidden" id="glutenFreeSizes">
+                  <select class="form-control" id="glutenFreeSelection">
+                    <option value="select">Select</option>
+                    <option>Small $10.99</option>
+                  </select>
+                </div>
+                -->
+                <h5 class="strong">STEP 3: Cheese Options</h5>
+                
+                <div class="form-group" id="cheese">
+                  <select class="form-control" id="cheeseSelection">
+                    <option>Light no charge</option>
+                    <option selected>Normal no charge</option>
+                    <option>Extra plus $2.99</option>
+                    <option>Double plus $3.99</option>
+                  </select>
+                </div>
+                
+                <h5 class="strong">STEP 4: Sauce Options</h5>
+                
+                <div class="form-group" id="sauce">
+                  <select class="form-control" id="sauceSelection">
+                    <option selected>Regular Tomato no charge</option>
+                    <option>Hearty Tomato plus $0.99</option>
+                    <option>BBQ Sauce plus $1.99</option>
+                  </select>
+                </div>
+                
+                <h5 class="strong">STEP 5: Topping Options $0.99 each</h5>
+                
+                <div class="form-group" id="toppingSelection">           
+                    <label class="checkbox-inline" style="margin-left: 10px">
+                      <input type="checkbox" value="pepperoni">pepperoni
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="sausage">sausage
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="ham">ham
+                    </label>
+                     <label class="checkbox-inline">
+                      <input type="checkbox" value="bacon">bacon
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="salami">salami
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="peppers">peppers
+                    </label>
+                     <label class="checkbox-inline">
+                      <input type="checkbox" value="olives">olives
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="jalapenos">jalapenos
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="mushrooms">mushrooms
+                    </label>
+                     <label class="checkbox-inline">
+                      <input type="checkbox" value="pineapple">pineapple
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="onions">onions
+                    </label>
+                </div>
+                
+            </div> <!-- End of Build Your Order -->
+                
+        </div> <!-- End of col-lg-10 -->
+      </div> <!-- End of row marketing -->
+
+      <footer class="footer">
+        <p>&copy; 2015 Peace Pies, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    
+    <!-- My Javascript -->
+    <script src="js/scripts_deliveryinfo.js" ></script>
+    <script type="text/javascript">
+
+    // Dough validation and Choose Size Update
+    
+    $("dough").addEventListener("click", checkDough, false);
+
+    function checkDough() {
+        if ($("handTossed").checked === false && $("thinCrust").checked === false && $("newYorkStyle").checked === false && $("glutenFree").checked === false) {
+           $("handTossed").focus();
+           $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";  
+        } else {
+           $("doughLabel").nextElementSibling.firstChild.nodeValue = "";
+           $("dough").focus();
+        }
+    }
+        
+    var objHandTossed = {
+        size0: ["Select", ""],
+        size1: ["Small", 9.99],
+        size2: ["Medium", 12.99],
+        size3: ["Large", 14.99]   
+    }
+    
+    var objThinCrust = {
+        size0: ["Select", ""],
+        size1: ["Medium", 11.99],
+        size2: ["Large", 13.99]   
+    }
+    
+    var objNewYorkStyle = {
+        size0: ["Select", ""],
+        size1: ["Large", 16.99],
+        size2: ["Extra Large", 19.99]   
+    }
+    
+    var objGlutenFree = {
+        size0: ["Select", ""],
+        size1: ["Small", 10.99],  
+    }
+                
+    $("dough").addEventListener("click", loadSizeOptions, false);
+        
+    function loadSizeOptions() {
+        $("sizes").innerHTML = "";
+        if ($("handTossed").checked) {
+            for (var x in objHandTossed){
+              var opt = document.createElement('option');
+              opt.value = objHandTossed[x][1];
+              opt.innerHTML = objHandTossed[x][0] + " " + objHandTossed[x][1];
+              $("sizes").appendChild(opt);
+            }
+        }
+        else if ($("thinCrust").checked) {
+            for (var x in objThinCrust){
+              var opt = document.createElement('option');
+              opt.value = objThinCrust[x][1];
+              opt.innerHTML = objThinCrust[x][0] + " " + objThinCrust[x][1];
+              $("sizes").appendChild(opt);
+            }
+        }
+        else if ($("newYorkStyle").checked) {
+            for (var x in objNewYorkStyle){
+              var opt = document.createElement('option');
+              opt.value = objNewYorkStyle[x][1];
+              opt.innerHTML = objNewYorkStyle[x][0] + " " + objNewYorkStyle[x][1];
+              $("sizes").appendChild(opt);
+            }
+        }
+        else if ($("glutenFree").checked) {
+            for (var x in objGlutenFree){
+              var opt = document.createElement('option');
+              opt.value = objGlutenFree[x][1];
+              opt.innerHTML = objGlutenFree[x][0] + " " + objGlutenFree[x][1];
+              $("sizes").appendChild(opt);
+            }
+        } 
+    }
+        
+    $("placeHolder").addEventListener("click", chooseDough, false);
+        
+        function chooseDough() {
+           if ($("doughLabel").nextElementSibling.firstChild.nodeValue != "")
+           $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required"; 
+        }
+    
+//    function loadSizeOptions() {
+//        if ($("handTossed").checked) {
+//            $("placeHolder").setAttribute("class", "form-group hidden")
+//            $("handTossedSizes").setAttribute("class", "form-group")
+//            $("thinCrustSizes").setAttribute("class", "form-group hidden")
+//            $("newYorkStyleSizes").setAttribute("class", "form-group hidden")
+//            $("glutenFreeSizes").setAttribute("class", "form-group hidden")
+//        } else if ($("thinCrust").checked) {
+//            $("placeHolder").setAttribute("class", "form-group hidden")
+//            $("handTossedSizes").setAttribute("class", "form-group hidden")
+//            $("thinCrustSizes").setAttribute("class", "form-group")
+//            $("newYorkStyleSizes").setAttribute("class", "form-group hidden")
+//            $("glutenFreeSizes").setAttribute("class", "form-group hidden")
+//        } else if ($("newYorkStyle").checked) {
+//            $("placeHolder").setAttribute("class", "form-group hidden")
+//            $("handTossedSizes").setAttribute("class", "form-group hidden")
+//            $("thinCrustSizes").setAttribute("class", "form-group hidden")
+//            $("newYorkStyleSizes").setAttribute("class", "form-group")
+//            $("glutenFreeSizes").setAttribute("class", "form-group hidden")
+//        } else if ($("glutenFree").checked) {
+//            $("placeHolder").setAttribute("class", "form-group hidden")
+//            $("handTossedSizes").setAttribute("class", "form-group hidden")
+//            $("thinCrustSizes").setAttribute("class", "form-group hidden")
+//            $("newYorkStyleSizes").setAttribute("class", "form-group hidden")
+//            $("glutenFreeSizes").setAttribute("class", "form-group")
+//        }
+//    }
+//        
+//    $("handTossedSelection").addEventListener("mouseout", checkSizeSelection, false);
+//    $("thinCrustSelection").addEventListener("mouseout", checkSizeSelection, false);
+//    $("newYorkStyleSelection").addEventListener("mouseout", checkSizeSelection, false);
+//    $("glutenFreeSelection").addEventListener("mouseout", checkSizeSelection, false);
+//    
+//    function checkSizeSelection() {
+//        if (this.value === "select") {
+//            $("sizeLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
+//            $("cheeseSelection").disabled = true;
+//            $("sauceSelection").disabled = true;
+//            $("toppingSelection").disabled = false;
+//        }
+//        else {
+//            $("sizeLabel").nextElementSibling.firstChild.nodeValue = "";
+//            $("cheeseSelection").disabled = false;
+//            $("sauceSelection").disabled = false;
+//            $("toppingSelection").disabled = false;
+//        }
+//    }
+    
+    
+        
+
+        
+    
+        
+    
+    
+        
+        
+      
+    </script>
+  </body>
+</html>

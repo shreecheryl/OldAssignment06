@@ -1,0 +1,31 @@
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+#otherType {
+    color: red;
+    margin-left: 50px;
+}
+
+#otherType input {
+     background-color: #eeffe6;
+}
+
+.other {
+    display: none;
+}
+
+select.form-control {
+    width: auto;
+}
+
+a {
+    color: #E78200;
+}
+
+.strong {
+    font-weight: bold;
+    display: inline-block;
+}
+
