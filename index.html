@@ -375,7 +375,7 @@
             }
         }
         
-     //  Billing Information
+    //  Billing Information
         
     $("billingInfoSame").addEventListener("click", fillBillingInfo, false);
         
@@ -401,6 +401,38 @@
                 $("zipCodeBilling").value = "";
             }
         }
+        
+    //  Validate Name, Address, City
+        
+    $("nameBilling").addEventListener("blur", validateEntry, false);
+    $("addressBilling").addEventListener("blur", validateEntry, false);
+    $("cityBilling").addEventListener("blur", validateEntry, false);    
+    
+        function validateEntry() {
+            if (this.value == "") {
+                this.nextElementSibling.firstChild.nodeValue = " This field is required";
+                this.focus();
+            } else {
+                this.nextElementSibling.firstChild.nodeValue = "";    
+            }
+        }
+    
+    //  Validate State
+        
+    $("stateBilling").addEventListener("blur", function() { validateRegExp($("stateBilling"), /[A-Z]{2}/); }, false);
+    
+         function validateRegExp(obj, patt) {
+            if (obj.value == "") {
+                obj.nextElementSibling.firstChild.nodeValue = " This field is required";
+                obj.focus();
+            } else if (patt.test(obj.value) === false) {
+                obj.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                obj.focus();
+            } else {
+                obj.nextElementSibling.firstChild.nodeValue = "";    
+            }
+        }
+        
         
         
         
