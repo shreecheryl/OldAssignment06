@@ -239,7 +239,7 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-warning:hover,
 .btn-warning:focus {
-  background-color: #eb9316;
+  background-color: #E78200;
   background-position: 0 -15px;
 }
 .btn-warning:active,

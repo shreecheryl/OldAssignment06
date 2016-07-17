@@ -41,6 +41,12 @@ input.floatRight {
     border: none;
     background-color: #E78200;
     color: #fff;
-    font-size: 1.2em;
+    font-size: 1.1em;
+}
+
+.btn-warning {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: #E78200;
 }
 

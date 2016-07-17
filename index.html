@@ -191,11 +191,44 @@
                     <label class="checkbox-inline">
                       <input type="checkbox" name="topping" value="onions" disabled>onions
                     </label>
-                </div>
-                
+                </div>   
             </div> <!-- End of Costs -->
+            
+            <button type="button" class="btn btn-warning" id="finished">Finished Building Pizza</button>
                 
-            </div> <!-- End of Build Your Order -->
+          </div> <!-- End of Build Your Order -->
+          
+          <!-- Billing Information-->
+          
+          <div class="form-group hidden" id="billingInfo"> 
+                <legend>Billing Information</legend>
+              
+                <label class="checkbox" style="margin-left: 20px">
+                <input type="checkbox" id="billingInfoSame">Same as Delivery Information
+                </label>
+              
+                <label for="nameBilling">Name on Card</label><br>
+                <input type="text" class="form-control" id="nameBilling" placeholder="first and last name">
+                <span class="red"> *</span><br><br>
+                
+                <label for="addressBilling">Street Address</label><br>
+                <input type="text" class="form-control" id="addressBilling" placeholder="address"><span class="red"> *</span><br><br>
+                
+                <label for="addressNumberBilling">Apt, Suite or Room Number</label><br>
+                <input type="text" class="form-control" id="addressNumberBilling" placeholder="ex: 555"><br><br>
+                
+                <label for="cityBilling">City</label><br>
+                <input type="text" class="form-control" id="cityBilling" placeholder="city">
+                <span class="red"> *</span><br><br>
+                
+                <label for="stateBilling">State</label><br>
+                <input type="text" class="form-control" id="stateBilling" placeholder="ex: CA">
+                <span class="red"> *</span><br><br>
+                
+                <label for="zipCodeBilling">Zip Code</label><br>
+                <input type="text" class="form-control" id="zipCodeBilling" placeholder="ex: 55555">
+                <span class="red"> *</span><br><br>
+          </div>  <!-- End of Billing Information -->  
                 
         </div> <!-- End of col-lg-10 -->
       </div> <!-- End of row marketing -->
@@ -319,11 +352,6 @@
             var sizeCost = $("sizes").value;
             var cheeseCost = $("cheeseSelection").value;
             var sauceCost = $("sauceSelection").value;
-            var toppingsCost = function() {
-                var toppings = document.getElementsByName("topping");
-                var selectedToppings = 
-                return selectedToppings.length * .99;
-            }
             var toppings = document.getElementsByName("topping");
             var selectedToppings = [];
             for (var i = 0; i < toppings.length; i++) {
@@ -333,6 +361,45 @@
             }
             var toppingsCost = selectedToppings.length * .99;
             $("total").value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost) + parseFloat(toppingsCost));
+        }
+        
+    $("finished").addEventListener("click", confirmOrder, false);
+        
+        function confirmOrder() {
+            var doneBuilding = window.confirm("Are you sure you are done building your pizza?");
+            if (doneBuilding === true) {
+                $("billingInfo").setAttribute("class", "form-group");
+                $("nameBilling").focus();
+            } else {
+                $("handTossed").focus();
+            }
+        }
+        
+     //  Billing Information
+        
+    $("billingInfoSame").addEventListener("click", fillBillingInfo, false);
+        
+        function fillBillingInfo() {
+            if ($("billingInfoSame").checked) {
+                $("nameBilling").value = $("fullName").value;
+                $("nameBilling").nextElementSibling.firstChild.nodeValue = "";
+                $("addressBilling").value = $("address").value;
+                $("addressBilling").nextElementSibling.firstChild.nodeValue = "";
+                $("addressNumberBilling").value = $("addressNumber").value;
+                $("cityBilling").value = $("city").value;
+                $("cityBilling").nextElementSibling.firstChild.nodeValue = "";
+                $("stateBilling").value = $("state").value;
+                $("stateBilling").nextElementSibling.firstChild.nodeValue = "";
+                $("zipCodeBilling").value = $("zipCode").value;
+                $("zipCodeBilling").nextElementSibling.firstChild.nodeValue = "";
+            } else {
+                $("nameBilling").value = "";
+                $("addressBilling").value = "";
+                $("addressNumberBilling").value = "";
+                $("cityBilling").value = "";
+                $("stateBilling").value = "";
+                $("zipCodeBilling").value = "";
+            }
         }
         
         
