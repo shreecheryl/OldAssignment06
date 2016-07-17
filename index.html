@@ -108,7 +108,7 @@
             <!-- Build Your Order -->
                 <div class="form-group" id="dough">
                     <legend>Build Your Pizza</legend>
-                    <input type="text" class="form-control floatRight" placeholder="Total" readonly id="total">
+                    <input type="text" class="form-control floatRight" value="Total" readonly id="total">
                 <h5 class="strong" id="doughLabel">STEP 1: Choose Your Dough</h5><span class="red"> *</span>
                     <div class="radio">
                     <label><input type="radio" name="optradio" id="handTossed">Hand Tossed</label>
@@ -126,6 +126,8 @@
                 
                 <h5 class="strong" id="sizeLabel">STEP 2: Choose Size</h5><span class="red"> *</span>
                 
+            <div id="costs">
+                
                 <div class="form-group" id="placeHolder">
                   <select class="form-control" id="sizes">
                     <option id="selectSize" value="select">Select</option>
@@ -136,10 +138,10 @@
                 
                 <div class="form-group" id="cheese">
                   <select class="form-control" id="cheeseSelection" disabled="true">
-                    <option>Light no charge</option>
-                    <option selected>Normal no charge</option>
-                    <option value="2.99">Extra plus $2.99</option>
-                    <option value="3.99">Double plus $3.99</option>
+                    <option value="0">Light no charge</option>
+                    <option value="0" selected>Normal no charge</option>
+                    <option value="2.99">Extra $2.99</option>
+                    <option value="3.99">Double $3.99</option>
                   </select>
                 </div>
                 
@@ -147,9 +149,9 @@
                 
                 <div class="form-group" id="sauce">
                   <select class="form-control" id="sauceSelection" disabled="true">
-                    <option selected>Regular Tomato no charge</option>
-                    <option>Hearty Tomato plus $0.99</option>
-                    <option>BBQ Sauce plus $1.99</option>
+                    <option value="0" selected>Regular Tomato no charge</option>
+                    <option value=".99">Hearty Tomato $0.99</option>
+                    <option value="1.99">BBQ Sauce $1.99</option>
                   </select>
                 </div>
                 
@@ -190,6 +192,8 @@
                       <input type="checkbox" name="topping" value="onions" disabled>onions
                     </label>
                 </div>
+                
+            </div> <!-- End of Costs -->
                 
             </div> <!-- End of Build Your Order -->
                 
@@ -291,14 +295,6 @@
            if ($("doughLabel").nextElementSibling.firstChild.nodeValue != "")
            $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
         }
-    
-    var sizeCost;
-    var cheeseCost;
-    var sauceCost;
-    var total = $("total");
-    function totalCost() {
-        total.value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost));
-    }
         
     $("sizes").addEventListener("change", updateSizeCost, false);
         
@@ -312,23 +308,19 @@
                 for (var x in toppings) {
                     toppings[x]["disabled"] = false;
                 }
-                var sizeCost = parseFloat(event.target.value);
-                var total = $("total");
-                total.value = Number(sizeCost);
             } else {
                 $("sizeLabel").nextElementSibling.firstChild.nodeValue = " Please select a size";
             }
         }
         
-    $("cheeseSelection").addEventListener("change", updateCheeseCost, false);
+    $("costs").addEventListener("change", calculateTotal, false);
         
-        function updateCheeseCost() {
-                var cheeseCost = event.target.value;
-                total.value = eval(Number(total.value) + Number(cheeseCost));
+        function calculateTotal() {
+            var sizeCost = $("sizes").value;
+            var cheeseCost = $("cheeseSelection").value;
+            var sauceCost = $("sauceSelection").value;
+            $("total").value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost));
         }
-        
-    
-
         
         
         
