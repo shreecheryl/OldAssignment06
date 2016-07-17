@@ -296,9 +296,9 @@
            $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
         }
         
-    $("sizes").addEventListener("change", updateSizeCost, false);
+    $("sizes").addEventListener("change", updateEnableExtras, false);
         
-        function updateSizeCost() {
+        function updateEnableExtras() {
             if (event.target.value != "") {
                 $("doughLabel").nextElementSibling.firstChild.nodeValue = "";
                 $("sizeLabel").nextElementSibling.firstChild.nodeValue = "";
@@ -319,7 +319,20 @@
             var sizeCost = $("sizes").value;
             var cheeseCost = $("cheeseSelection").value;
             var sauceCost = $("sauceSelection").value;
-            $("total").value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost));
+            var toppingsCost = function() {
+                var toppings = document.getElementsByName("topping");
+                var selectedToppings = 
+                return selectedToppings.length * .99;
+            }
+            var toppings = document.getElementsByName("topping");
+            var selectedToppings = [];
+            for (var i = 0; i < toppings.length; i++) {
+                if (toppings[i].checked) {
+                    selectedToppings.push(toppings[i]);
+                    }
+            }
+            var toppingsCost = selectedToppings.length * .99;
+            $("total").value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost) + parseFloat(toppingsCost));
         }
         
         
