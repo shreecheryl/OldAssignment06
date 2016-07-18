@@ -60,9 +60,7 @@ $("fullName").focus();
 //           $("other").nextElementSibling.firstChild.nodeValue = ""; 
 //        } 
 //    }
-//        
-//    
-//        
+//   
 //    // Address validation
 //        
 //    $("address").addEventListener("blur", checkAddress, false);
@@ -94,11 +92,11 @@ $("fullName").focus();
 //    $("state").addEventListener("blur", checkState, false);
 //        
 //    function checkState() {
-//        var patt = /[A-Z][A-Z]/
+//        var patt = /^[A-Z]{2}$/
 //        if ($("state").value == "") {
 //           $("state").focus();
 //           $("state").nextElementSibling.firstChild.nodeValue = " This field is required";  
-//        } else if (patt.test($("state").value) === false || $("state").value.length != 2 ) {
+//        } else if (patt.test($("state").value) === false) {
 //           $("state").focus();
 //           $("state").nextElementSibling.firstChild.nodeValue = " Entry not valid";
 //           $("state").value = "";

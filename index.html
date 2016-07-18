@@ -265,6 +265,8 @@
               <label for="ccCVC">CVC Code</label><br>
                 <input type="text" class="form-control" id="ccCVC" placeholder="" disabled="true">
                 <span class="red"> *</span><br><br>
+              
+              <button type="button" class="btn btn-warning" id="finished">Submit Order</button> 
                 
           </div>  <!-- End of Billing Information -->
           
@@ -450,102 +452,108 @@
             }
         }
         
-    //  Validate Name, Address, City
+    // Validate Billing Name, Address, City
         
-//    $("nameBilling").addEventListener("blur", validateEntry, false);
-//    $("addressBilling").addEventListener("blur", validateEntry, false);
-//    $("cityBilling").addEventListener("blur", validateEntry, false);    
-//    
-//        function validateEntry() {
-//            if (this.value == "") {
-//                this.nextElementSibling.firstChild.nodeValue = " This field is required";
-//                this.focus();
-//            } else {
-//                this.nextElementSibling.firstChild.nodeValue = "";    
-//            }
-//        }
-//    
-//    //  Validate State, Zip Code
-//        
-//    $("stateBilling").addEventListener("blur", function() { validateRegExp($("stateBilling"), /[A-Z]{2}/); }, false);
-//    $("zipCodeBilling").addEventListener("blur", function() { validateRegExp($("zipCodeBilling"), /(^\d{5}$)|(^\d{5}-\d{4}$)/); }, false);
-//    
-//         function validateRegExp(obj, patt) {
-//            if (obj.value == "") {
-//                obj.nextElementSibling.firstChild.nodeValue = " This field is required";
-//                obj.focus();
-//            } else if (patt.test(obj.value) === false) {
-//                obj.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                obj.value = "";
-//                obj.focus();
-//            } else {
-//                obj.nextElementSibling.firstChild.nodeValue = "";    
-//            }
-//        }
+    $("nameBilling").addEventListener("blur", validateEntry, false);
+    $("addressBilling").addEventListener("blur", validateEntry, false);
+    $("cityBilling").addEventListener("blur", validateEntry, false);    
+    
+        function validateEntry() {
+            if (this.value == "") {
+                this.nextElementSibling.firstChild.nodeValue = " This field is required";
+                this.focus();
+            } else {
+                this.nextElementSibling.firstChild.nodeValue = "";    
+            }
+        }
+    
+    //  Validate State, Zip Code
         
-//        // Validate Credit Card Number
-//        
-//        $("ccNumber").addEventListener("blur", checkCardNumber, false);
-//            
-//            function checkCardNumber() {
-//            this.value = this.value.replace(/\s/g, "");
-//            this.value = this.value.replace(/-/g, "");
-//            // accept only digits
-//	        if (/[^0-9]+/.test(this.value)) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 3 && this.value.length != 13) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 4 && this.value.length != 13 && this.value.length != 16) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 5 && this.value.length != 16) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 5 && (this.value.charAt(1) == 0 || this.value.charAt(1) > 5)) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//	        else {
-//            this.value = this.value.replace(/\D/g, "");
-//	        var nCheck = 0, nDigit = 0, isEven = false;
-//
-//	        for (var n = this.value.length - 1; n >= 0; n--) {
-//		          var cDigit = this.value.charAt(n),
-//			      nDigit = parseInt(cDigit, 10);
-//
-//		    if (isEven) {
-//            if ((nDigit *= 2) > 9) {
-//                nDigit -= 9;
-//                }
-//            }
-//
-//            nCheck += nDigit;
-//		    isEven = !isEven;
-//	       }
-//
-//	       if ((nCheck % 10) != 0) {
-//              this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//              this.value = "";
-//              this.focus(); 
-//           } else {
-//              this.nextElementSibling.firstChild.nodeValue = "";
-//              this.nextElementSibling.focus();
-//             }
-//            }
-//           }
-//        
-        // Validate Expiration Info
+    $("stateBilling").addEventListener("blur", function() { validateRegExp($("stateBilling"), /^[A-Z]{2}$/); }, false);
+    $("zipCodeBilling").addEventListener("blur", function() { validateRegExp($("zipCodeBilling"), /(^\d{5}$)|(^\d{5}-\d{4}$)/); }, false);
+    
+         function validateRegExp(obj, patt) {
+            if (obj.value == "") {
+                obj.nextElementSibling.firstChild.nodeValue = " This field is required";
+                obj.focus();
+            } else if (patt.test(obj.value) === false) {
+                obj.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                obj.value = "";
+                obj.focus();
+            } else {
+                obj.nextElementSibling.firstChild.nodeValue = "";    
+            }
+        }
+        
+    // Validate Credit Card Number
+        
+    $("ccNumber").addEventListener("blur", checkCardNumber, false);
+            
+        function checkCardNumber() {
+            this.value = this.value.replace(/\s/g, "");
+            this.value = this.value.replace(/-/g, "");
+            // accept only digits
+	        if (/[^0-9]+/.test(this.value)) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 3 && this.value.length != 13) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 4 && this.value.length != 13 && this.value.length != 16) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 5 && this.value.length != 16) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 5 && (this.value.charAt(1) == 0 || this.value.charAt(1) > 5)) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+	        else {
+            this.value = this.value.replace(/\D/g, "");
+	        var nCheck = 0, nDigit = 0, isEven = false;
+
+	        for (var n = this.value.length - 1; n >= 0; n--) {
+		          var cDigit = this.value.charAt(n),
+			      nDigit = parseInt(cDigit, 10);
+
+		    if (isEven) {
+            if ((nDigit *= 2) > 9) {
+                nDigit -= 9;
+                }
+            }
+
+            nCheck += nDigit;
+		    isEven = !isEven;
+	       }
+
+	       if ((nCheck % 10) != 0) {
+              this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+              this.value = "";
+              this.focus(); 
+           } else {
+              if (this.value.charAt(0) == 3) {
+              this.nextElementSibling.firstChild.nodeValue = " American Express";
+              } else if (this.value.charAt(0) == 4) {
+              this.nextElementSibling.firstChild.nodeValue = " VISA";
+              } else if (this.value.charAt(0) == 5) {
+              this.nextElementSibling.firstChild.nodeValue = " MasterCard";
+              }
+              this.nextElementSibling.focus();
+             }
+            }
+           }
+        
+    // Validate Expiration Info
         
         $("ccYear").addEventListener("change", checkExpDate, false);
         $("ccMonth").addEventListener("change", checkExpDate, false);
@@ -580,45 +588,10 @@
             }
         }
         
-
+    // Validate CVC Code
         
-
-    
-    
-        
-    
-    
-//    $("handTossedSelection").addEventListener("mouseout", checkSizeSelection, false);
-//    $("thinCrustSelection").addEventListener("mouseout", checkSizeSelection, false);
-//    $("newYorkStyleSelection").addEventListener("mouseout", checkSizeSelection, false);
-//    $("glutenFreeSelection").addEventListener("mouseout", checkSizeSelection, false);
-//    
-//    function checkSizeSelection() {
-//        if (this.value === "select") {
-//            $("sizeLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
-//            $("cheeseSelection").disabled = true;
-//            $("sauceSelection").disabled = true;
-//            $("toppingSelection").disabled = false;
-//        }
-//        else {
-//            $("sizeLabel").nextElementSibling.firstChild.nodeValue = "";
-//            $("cheeseSelection").disabled = false;
-//            $("sauceSelection").disabled = false;
-//            $("toppingSelection").disabled = false;
-//        }
-//    }
-    
-    
-        
-
-        
-    
-        
-    
-    
-        
-        
-      
+        $("ccCVC").addEventListener("blur", function() { validateRegExp($("ccCVC"), /^[0-9]{3,4}$/); }, false);
+         
     </script>
   </body>
 </html>
