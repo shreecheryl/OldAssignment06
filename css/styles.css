@@ -15,6 +15,10 @@ select.form-control {
      background-color: #eeffe6;
 }
 
+#ccCVC {
+    width: 65px;
+}
+
 .other {
     display: none;
 }

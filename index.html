@@ -105,7 +105,7 @@
                  
             </div>  <!-- End of Delivery Information -->
             
-            <!-- Build Your Order -->
+        <!-- Build Your Order -->
                 <div class="form-group" id="dough">
                     <legend>Build Your Pizza</legend>
                     <input type="text" class="form-control floatRight" value="Total" readonly id="total">
@@ -228,7 +228,46 @@
                 <label for="zipCodeBilling">Zip Code</label><br>
                 <input type="text" class="form-control" id="zipCodeBilling" placeholder="ex: 55555">
                 <span class="red"> *</span><br><br>
-          </div>  <!-- End of Billing Information -->  
+              
+                <label for="ccNmber">Credit Card Number</label><br>
+                <input type="text" class="form-control" id="ccNumber" placeholder="ex: 5555 5555 5555 5555">
+                <span class="red"> *</span><br><br>
+            
+                <label for="ccMonth">Expires Month</label><br>
+                <select class="form-control" id="ccMonth">
+                    <option id="Select" value="Select">Select</option>
+                    <option value="0">Jan</option>
+                    <option value="1">Feb</option>
+                    <option value="2">Mar</option>
+                    <option value="3">Apr</option>
+                    <option value="4">May</option>
+                    <option value="5">Jun</option>
+                    <option value="6">Jul</option>
+                    <option value="7">Aug</option>
+                    <option value="8">Sep</option>
+                    <option value="9">Oct</option>
+                    <option value="10">Nov</option>
+                    <option value="11">Dec</option>
+                </select><span class="red"> *</span><br><br>
+              
+                <label for="ccYear">Expires Year</label><br>
+                <select class="form-control" id="ccYear">
+                    <option id="Select" value="Select">Select</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select><span class="red"> *</span><br><br>
+              
+              <label for="ccCVC">CVC Code</label><br>
+                <input type="text" class="form-control" id="ccCVC" placeholder="" disabled="true">
+                <span class="red"> *</span><br><br>
+                
+          </div>  <!-- End of Billing Information -->
+          
                 
         </div> <!-- End of col-lg-10 -->
       </div> <!-- End of row marketing -->
@@ -243,7 +282,9 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     
     <!-- My Javascript -->
+    
     <script src="js/scripts_deliveryinfo.js" ></script>
+    
     <script type="text/javascript">
 
     // Dough validation and Choose Size Update
@@ -325,13 +366,14 @@
     $("placeHolder").addEventListener("click", chooseDough, false);
         
         function chooseDough() {
-           if ($("doughLabel").nextElementSibling.firstChild.nodeValue != "")
-           $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
+           if ($("doughLabel").nextElementSibling.firstChild.nodeValue != "") {
+            $("doughLabel").nextElementSibling.firstChild.nodeValue = " This field is required";
+           }
         }
         
-    $("sizes").addEventListener("change", updateEnableExtras, false);
+    $("sizes").addEventListener("change", enableExtras, false);
         
-        function updateEnableExtras() {
+        function enableExtras() {
             if (event.target.value != "") {
                 $("doughLabel").nextElementSibling.firstChild.nodeValue = "";
                 $("sizeLabel").nextElementSibling.firstChild.nodeValue = "";
@@ -343,6 +385,12 @@
                 }
             } else {
                 $("sizeLabel").nextElementSibling.firstChild.nodeValue = " Please select a size";
+                $("cheeseSelection").disabled = true;
+                $("sauceSelection").disabled = true;
+                var toppings = document.getElementsByName("topping");
+                for (var x in toppings) {
+                    toppings[x]["disabled"] = true;
+                }
             }
         }
         
@@ -404,37 +452,135 @@
         
     //  Validate Name, Address, City
         
-    $("nameBilling").addEventListener("blur", validateEntry, false);
-    $("addressBilling").addEventListener("blur", validateEntry, false);
-    $("cityBilling").addEventListener("blur", validateEntry, false);    
-    
-        function validateEntry() {
-            if (this.value == "") {
-                this.nextElementSibling.firstChild.nodeValue = " This field is required";
-                this.focus();
+//    $("nameBilling").addEventListener("blur", validateEntry, false);
+//    $("addressBilling").addEventListener("blur", validateEntry, false);
+//    $("cityBilling").addEventListener("blur", validateEntry, false);    
+//    
+//        function validateEntry() {
+//            if (this.value == "") {
+//                this.nextElementSibling.firstChild.nodeValue = " This field is required";
+//                this.focus();
+//            } else {
+//                this.nextElementSibling.firstChild.nodeValue = "";    
+//            }
+//        }
+//    
+//    //  Validate State, Zip Code
+//        
+//    $("stateBilling").addEventListener("blur", function() { validateRegExp($("stateBilling"), /[A-Z]{2}/); }, false);
+//    $("zipCodeBilling").addEventListener("blur", function() { validateRegExp($("zipCodeBilling"), /(^\d{5}$)|(^\d{5}-\d{4}$)/); }, false);
+//    
+//         function validateRegExp(obj, patt) {
+//            if (obj.value == "") {
+//                obj.nextElementSibling.firstChild.nodeValue = " This field is required";
+//                obj.focus();
+//            } else if (patt.test(obj.value) === false) {
+//                obj.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//                obj.value = "";
+//                obj.focus();
+//            } else {
+//                obj.nextElementSibling.firstChild.nodeValue = "";    
+//            }
+//        }
+        
+//        // Validate Credit Card Number
+//        
+//        $("ccNumber").addEventListener("blur", checkCardNumber, false);
+//            
+//            function checkCardNumber() {
+//            this.value = this.value.replace(/\s/g, "");
+//            this.value = this.value.replace(/-/g, "");
+//            // accept only digits
+//	        if (/[^0-9]+/.test(this.value)) {
+//                this.value = "";
+//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//                this.focus();
+//            }
+//            else if (this.value.charAt(0) == 3 && this.value.length != 13) {
+//                this.value = "";
+//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//                this.focus();
+//            }
+//            else if (this.value.charAt(0) == 4 && this.value.length != 13 && this.value.length != 16) {
+//                this.value = "";
+//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//                this.focus();
+//            }
+//            else if (this.value.charAt(0) == 5 && this.value.length != 16) {
+//                this.value = "";
+//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//                this.focus();
+//            }
+//            else if (this.value.charAt(0) == 5 && (this.value.charAt(1) == 0 || this.value.charAt(1) > 5)) {
+//                this.value = "";
+//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//                this.focus();
+//            }
+//	        else {
+//            this.value = this.value.replace(/\D/g, "");
+//	        var nCheck = 0, nDigit = 0, isEven = false;
+//
+//	        for (var n = this.value.length - 1; n >= 0; n--) {
+//		          var cDigit = this.value.charAt(n),
+//			      nDigit = parseInt(cDigit, 10);
+//
+//		    if (isEven) {
+//            if ((nDigit *= 2) > 9) {
+//                nDigit -= 9;
+//                }
+//            }
+//
+//            nCheck += nDigit;
+//		    isEven = !isEven;
+//	       }
+//
+//	       if ((nCheck % 10) != 0) {
+//              this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+//              this.value = "";
+//              this.focus(); 
+//           } else {
+//              this.nextElementSibling.firstChild.nodeValue = "";
+//              this.nextElementSibling.focus();
+//             }
+//            }
+//           }
+//        
+        // Validate Expiration Info
+        
+        $("ccYear").addEventListener("change", checkExpDate, false);
+        $("ccMonth").addEventListener("change", checkExpDate, false);
+        
+        function checkExpDate() {
+            var today = new Date();
+            currentMonth = today.getMonth();
+            currentYear = today.getFullYear();
+            if ($("ccYear").value == currentYear && $("ccMonth").value >= currentMonth) {
+                $("ccMonth").nextElementSibling.firstChild.nodeValue = "";
+                $("ccYear").nextElementSibling.firstChild.nodeValue = "";
+                $("ccCVC").disabled = false;
+                $("ccCVC").focus();
+            } else if ($("ccYear").value == currentYear && $("ccMonth").value < currentMonth) {
+                $("ccMonth").nextElementSibling.firstChild.nodeValue = " Credit card has expired";
+                $("ccYear").nextElementSibling.firstChild.nodeValue = " *";
+                $("ccCVC").disabled = true;
+                $("ccMonth").focus();
+            } else if ($("ccYear").value > currentYear && $("ccMonth").value != "Select") {
+                $("ccMonth").nextElementSibling.firstChild.nodeValue = "";
+                $("ccYear").nextElementSibling.firstChild.nodeValue = "";
+                $("ccCVC").disabled = false;
+                $("ccCVC").focus();
+            } else if ($("ccMonth").value == "Select" || $("ccYear").value == "Select") {
+                $("ccMonth").nextElementSibling.firstChild.nodeValue = " *";
+                $("ccYear").nextElementSibling.firstChild.nodeValue = " *";
+                $("ccCVC").disabled = true;
+                $("ccMonth").focus();
             } else {
-                this.nextElementSibling.firstChild.nodeValue = "";    
+                $("ccCVC").disabled = true;
+                $("ccMonth").focus();
             }
         }
-    
-    //  Validate State
         
-    $("stateBilling").addEventListener("blur", function() { validateRegExp($("stateBilling"), /[A-Z]{2}/); }, false);
-    
-         function validateRegExp(obj, patt) {
-            if (obj.value == "") {
-                obj.nextElementSibling.firstChild.nodeValue = " This field is required";
-                obj.focus();
-            } else if (patt.test(obj.value) === false) {
-                obj.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-                obj.focus();
-            } else {
-                obj.nextElementSibling.firstChild.nodeValue = "";    
-            }
-        }
-        
-        
-        
+
         
 
     

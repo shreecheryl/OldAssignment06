@@ -2,7 +2,7 @@ var $ = function(id) {
         return document.getElementById(id);
 }
 
-//$("fullName").focus();
+$("fullName").focus();
         
     // Name validation
     
@@ -40,7 +40,7 @@ var $ = function(id) {
 //        
 //    // "Other" Address Type
 //        
-//    $("addressType").addEventListener("mouseout", displayOther, false);
+//    $("addressType").addEventListener("change", displayOther, false);
 //        
 //    function displayOther() {
 //        if ($("Other").selected) {
@@ -158,6 +158,7 @@ var $ = function(id) {
 //           $("emailAddress").nextElementSibling.firstChild.nodeValue = " Entry not valid";
 //           $("emailAddress").value = "";
 //        } else {
-//           $("emailAddress").nextElementSibling.firstChild.nodeValue = ""; 
+//           $("emailAddress").nextElementSibling.firstChild.nodeValue = "";
+//           $("handTossed").focus();  
 //        }
 //    }
