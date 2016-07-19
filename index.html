@@ -198,11 +198,13 @@
                 </div>   
             </div> <!-- End of Costs -->
             
-            <button type="button" class="btn btn-warning" id="finished">Finished Building Pizza</button>
+            <button type="button" class="btn btn-warning" id="finished" disabled>Finished Building Pizza</button>
                 
           </div> <!-- End of Build Your Order -->
           
           <!-- Billing Information-->
+          
+          <div class="col-lg-10">
           
           <div class="form-group hidden" id="billingInfo"> 
                 <legend>Billing Information</legend>
@@ -237,8 +239,9 @@
                 <input type="text" class="form-control" id="ccNumber" placeholder="ex: 5555 5555 5555 5555">
                 <span class="red"> *</span><br><br>
             
+              <div id="expDate">  <!-- Exp Date -->
                 <label for="ccMonth">Expires Month</label><br>
-                <select class="form-control" id="ccMonth">
+                <select class="form-control" id="ccMonth" disabled>
                     <option id="Select" value="Select">Select</option>
                     <option value="0">Jan</option>
                     <option value="1">Feb</option>
@@ -255,7 +258,7 @@
                 </select><span class="red"> *</span><br><br>
               
                 <label for="ccYear">Expires Year</label><br>
-                <select class="form-control" id="ccYear">
+                <select class="form-control" id="ccYear" disabled>
                     <option id="Select" value="Select">Select</option>
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
@@ -265,18 +268,19 @@
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
                 </select><span class="red"> *</span><br><br>
+              </div>  <!-- End of Exp Date -->
               
               <label for="ccCVC">CVC Code</label><br>
-                <input type="text" class="form-control" id="ccCVC" placeholder="" disabled="true">
+                <input type="text" class="form-control" id="ccCVC" placeholder="" disabled>
                 <span class="red"> *</span><br><br>
               
-              <button type="button" class="btn btn-warning" id="finished">Submit Order</button> 
+              <button type="button" class="btn btn-warning" id="submit" disabled>Submit Order</button> 
                 
           </div>  <!-- End of Billing Information -->
-          
+          </div>  <!-- End of col-lg-10> -->
                 
-        </div> <!-- End of col-lg-10 -->
-      </div> <!-- End of row marketing -->
+        </div> <!-- End of marketing -->
+      </div> <!-- End of container -->
 
       <footer class="footer">
         <p>&copy; 2015 Peace Pies, Inc.</p>
