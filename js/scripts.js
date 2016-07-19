@@ -1,3 +1,9 @@
+window.addEventListener("load", init, false);
+
+function init() {
+
+"use strict";
+
 var $ = function(id) {
         return document.getElementById(id);
 }
@@ -226,6 +232,8 @@ $("fullName").focus();
                 }
             }
         }
+    
+    //  Keep Running Total
         
     $("costs").addEventListener("change", calculateTotal, false);
         
@@ -241,7 +249,7 @@ $("fullName").focus();
                     }
             }
             var toppingsCost = selectedToppings.length * .99;
-            $("total").value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost) + parseFloat(toppingsCost));
+            $("total").value = "$" + eval(parseFloat(sizeCost) + parseFloat(cheeseCost) + parseFloat(sauceCost) + parseFloat(toppingsCost)).toFixed(2);
         }
         
     $("finished").addEventListener("click", confirmOrder, false);
@@ -250,7 +258,7 @@ $("fullName").focus();
             var doneBuilding = window.confirm("Are you sure you are done building your pizza?");
             if (doneBuilding === true) {
                 $("billingInfo").setAttribute("class", "form-group");
-                $("nameBilling").focus();
+                $("billingInfoSame").focus();
             } else {
                 $("handTossed").focus();
             }
@@ -297,71 +305,71 @@ $("fullName").focus();
         
     // Validate Credit Card Number
         
-//    $("ccNumber").addEventListener("blur", checkCardNumber, false);
-//            
-//        function checkCardNumber() {
-//            this.value = this.value.replace(/\s/g, "");
-//            this.value = this.value.replace(/-/g, "");
-//            // accept only digits
-//	        if (/[^0-9]+/.test(this.value)) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 3 && this.value.length != 13) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 4 && this.value.length != 13 && this.value.length != 16) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 5 && this.value.length != 16) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//            else if (this.value.charAt(0) == 5 && (this.value.charAt(1) == 0 || this.value.charAt(1) > 5)) {
-//                this.value = "";
-//                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//                this.focus();
-//            }
-//	        else {
-//            this.value = this.value.replace(/\D/g, "");
-//	        var nCheck = 0, nDigit = 0, isEven = false;
-//
-//	        for (var n = this.value.length - 1; n >= 0; n--) {
-//		          var cDigit = this.value.charAt(n),
-//			      nDigit = parseInt(cDigit, 10);
-//
-//		    if (isEven) {
-//            if ((nDigit *= 2) > 9) {
-//                nDigit -= 9;
-//                }
-//            }
-//
-//            nCheck += nDigit;
-//		    isEven = !isEven;
-//	       }
-//
-//	       if ((nCheck % 10) != 0) {
-//              this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
-//              this.value = "";
-//              this.focus(); 
-//           } else {
-//              if (this.value.charAt(0) == 3) {
-//              this.nextElementSibling.firstChild.nodeValue = " American Express";
-//              } else if (this.value.charAt(0) == 4) {
-//              this.nextElementSibling.firstChild.nodeValue = " VISA";
-//              } else if (this.value.charAt(0) == 5) {
-//              this.nextElementSibling.firstChild.nodeValue = " MasterCard";
-//              }
-//              this.nextElementSibling.focus();
-//             }
-//            }
-//           }
+    $("ccNumber").addEventListener("blur", checkCardNumber, false);
+            
+        function checkCardNumber() {
+            this.value = this.value.replace(/\s/g, "");
+            this.value = this.value.replace(/-/g, "");
+            // accept only digits
+	        if (/[^0-9]+/.test(this.value)) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 3 && this.value.length != 13) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 4 && this.value.length != 13 && this.value.length != 16) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 5 && this.value.length != 16) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+            else if (this.value.charAt(0) == 5 && (this.value.charAt(1) == 0 || this.value.charAt(1) > 5)) {
+                this.value = "";
+                this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+                this.focus();
+            }
+	        else {
+            this.value = this.value.replace(/\D/g, "");
+	        var nCheck = 0, nDigit = 0, isEven = false;
+
+	        for (var n = this.value.length - 1; n >= 0; n--) {
+		          var cDigit = this.value.charAt(n),
+			      nDigit = parseInt(cDigit, 10);
+
+		    if (isEven) {
+            if ((nDigit *= 2) > 9) {
+                nDigit -= 9;
+                }
+            }
+
+            nCheck += nDigit;
+		    isEven = !isEven;
+	       }
+
+	       if ((nCheck % 10) != 0) {
+              this.nextElementSibling.firstChild.nodeValue = " Entry is invalid";
+              this.value = "";
+              this.focus(); 
+           } else {
+              if (this.value.charAt(0) == 3) {
+              this.nextElementSibling.firstChild.nodeValue = " American Express";
+              } else if (this.value.charAt(0) == 4) {
+              this.nextElementSibling.firstChild.nodeValue = " VISA";
+              } else if (this.value.charAt(0) == 5) {
+              this.nextElementSibling.firstChild.nodeValue = " MasterCard";
+              }
+              this.nextElementSibling.focus();
+             }
+            }
+           }
         
     // Validate Expiration Info
         
@@ -370,8 +378,8 @@ $("fullName").focus();
         
         function checkExpDate() {
             var today = new Date();
-            currentMonth = today.getMonth();
-            currentYear = today.getFullYear();
+            var currentMonth = today.getMonth();
+            var currentYear = today.getFullYear();
             if ($("ccYear").value == currentYear && $("ccMonth").value >= currentMonth) {
                 $("ccMonth").nextElementSibling.firstChild.nodeValue = "";
                 $("ccYear").nextElementSibling.firstChild.nodeValue = "";
@@ -401,3 +409,4 @@ $("fullName").focus();
     // Validate CVC Code
         
         $("ccCVC").addEventListener("blur", function() { validateRegExp($("ccCVC"), /^[0-9]{3,4}$/); }, false);
+    }
